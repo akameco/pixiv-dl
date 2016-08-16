@@ -42,17 +42,16 @@ if (!cli.input[0]) {
 
 const opts = cli.flags;
 
-if (opts && opts.username && opts.password) {
-	pixivDl(cli.input[0], cli.flags);
-	config.set('username', opts.username);
-	config.set('password', opts.password);
-} else {
-	if (!config.has('username') || !config.has('password')) {
-		console.log('require username && password');
-		process.exit(1);
-	}
 
-	opts.username = config.get('username');
-	opts.password = config.get('password');
-	pixivDl(cli.input[0], opts);
+opts.username = opts.username || config.get('username');
+opts.password = opts.password || config.get('password');
+
+if (!(opts.username && opts.password)) {
+	console.log('require username && password');
+	process.exit(1);
 }
+
+pixivDl(cli.input[0], opts);
+
+config.set('username', opts.username);
+config.set('password', opts.password);
