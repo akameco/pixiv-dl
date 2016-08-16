@@ -14,10 +14,10 @@ const dotProp = require('dot-prop');
 const sanitize = require('sanitize-filename');
 const render = require('./render');
 
-function renderInfo(name, value) {
+const renderInfo = (name, value) => {
 	const meta = chalk.gray(name);
 	return `${meta} ${value}`;
-}
+};
 
 module.exports = (input, opts) => {
 	if (typeof input !== 'string') {
