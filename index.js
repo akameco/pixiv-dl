@@ -11,7 +11,7 @@ const cliTruncate = require('cli-truncate');
 const chalk = require('chalk');
 const mkdirp = require('mkdirp');
 const dotProp = require('dot-prop');
-const sanitize = require("sanitize-filename");
+const sanitize = require('sanitize-filename');
 const render = require('./render');
 
 function renderInfo(name, value) {
