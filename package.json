@@ -46,7 +46,6 @@
     "ora": "^0.3.0",
     "pixiv-app-api": "^0.1.0",
     "pixiv-img": "^0.3.1",
-    "pixiv.js": "^0.17.2",
     "sanitize-filename": "^1.6.0",
     "update-notifier": "^1.0.2"
   },
