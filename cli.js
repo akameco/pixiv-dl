@@ -16,10 +16,14 @@ const cli = meow(`
 	  --password, -p  pixiv password (use cache)↲
 	  --output, -o    output directory [Default: curret dir]
 	  --name, -n      custom filename
+	  ranking         ranking mode
+	    day | week | month | day_male | day_female | week_original | week_rookie | day_mang
+	    day_r18 | day_male_r18 | day_female_r18 | week_r18 | week_r18g
 
 	Examples
 	  $ pixiv-dl リゼロ10000users入り --username hoge --password fuga
 	  $ pixiv-dl リゼロ10000users入り --output rezero --name user.account-title
+	  $ pixiv-dl ranking day --output rezero --name user.account-title
 
 `, {
 	alias: {
@@ -42,6 +46,9 @@ if (!cli.input[0]) {
 
 const opts = cli.flags;
 
+if (cli.input[1]) {
+	opts.mode = cli.input[1];
+}
 
 opts.username = opts.username || config.get('username');
 opts.password = opts.password || config.get('password');

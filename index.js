@@ -36,7 +36,10 @@ module.exports = (input, opts) => {
 	render.update('Start downloading');
 
 	co(function * () {
-		const result = yield pixiv.searchIllust(input);
+		const result = input === 'ranking' ?
+			yield pixiv.illustRanking({mode: opts.mode}) :
+			yield pixiv.searchIllust(input);
+
 		let list = result.illusts;
 
 		while (true) { // eslint-disable-line no-constant-condition
