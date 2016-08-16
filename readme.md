@@ -1,6 +1,6 @@
 # pixiv-dl [![Build Status](https://travis-ci.org/akameco/pixiv-dl.svg?branch=master)](https://travis-ci.org/akameco/pixiv-dl)
 
-> pixiv downloader
+> pixiv image downloader
 
 <img src="screenshot.gif">
 
@@ -17,7 +17,7 @@ $ npm install --global pixiv-dl
 $ pixiv-dl --help
 
 
-  image downloader for pixiv
+  pixiv image downloader
 
   Usage
     $ pixiv-dl [input]
