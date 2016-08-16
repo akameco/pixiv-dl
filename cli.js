@@ -28,7 +28,7 @@ const cli = meow(`
 		username: 'u',
 		password: 'p'
 	},
-	Default: {
+	default: {
 		output: process.cwd()
 	}
 });
