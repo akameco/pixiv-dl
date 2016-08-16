@@ -1,0 +1,59 @@
+{
+  "name": "pixiv-dl",
+  "version": "0.0.0",
+  "description": "image downloader for pixiv",
+  "license": "MIT",
+  "repository": "akameco/pixiv-dl",
+  "author": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com",
+    "url": "akameco.github.io"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo"
+  },
+  "files": [
+    "index.js",
+    "render.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    "pixiv",
+    "pixiv-app",
+    "dl",
+    "downloader",
+    "moe"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "cli-truncate": "^0.2.1",
+    "co": "^4.6.0",
+    "conf": "^0.11.2",
+    "delay": "^1.3.1",
+    "dot-prop": "^3.0.0",
+    "figures": "^1.7.0",
+    "indent-string": "^3.0.0",
+    "log-symbols": "^1.0.2",
+    "log-update": "^1.0.2",
+    "meow": "^3.7.0",
+    "mkdirp": "^0.5.1",
+    "ora": "^0.3.0",
+    "pixiv-app-api": "^0.1.0",
+    "pixiv-img": "^0.3.1",
+    "pixiv.js": "^0.17.2",
+    "sanitize-filename": "^1.6.0",
+    "update-notifier": "^1.0.2"
+  },
+  "devDependencies": {
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "esnext": true
+  }
+}
