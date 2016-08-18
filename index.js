@@ -49,7 +49,7 @@ module.exports = (input, opts) => {
 			const result = yield pixiv.next();
 			list = [].concat(list, result.illusts);
 			render.update('Get metadata', `${list.length}`);
-			yield delay(100);
+			yield delay(opts.delay);
 		}
 
 		list = list.filter(x => x.meta_single_page.original_image_url);
@@ -89,7 +89,7 @@ module.exports = (input, opts) => {
 			render.update(title, indentString(out, 2));
 
 			yield pixivImg(orignalImgUrl, outputPath);
-			yield delay(1000);
+			yield delay(opts.delay);
 		}
 
 		render.update(`${logSymbols.success} download finish`);
