@@ -35,7 +35,7 @@ module.exports = (input, opts) => {
 	render.start();
 	render.update('Start downloading');
 
-	co(function * () {
+	return co(function * () {
 		const result = input === 'ranking' ?
 			yield pixiv.illustRanking({mode: opts.mode}) :
 			yield pixiv.searchIllust(input);
@@ -96,12 +96,12 @@ module.exports = (input, opts) => {
 		yield delay(100);
 		render.end();
 	}).catch(err => {
-		Promise.resolve().then(() => {
-			render.update(`${logSymbols.failer} download finish`);
+		return Promise.resolve().then(() => {
+			render.update(`${logSymbols.error} download failer`);
 			return delay(100);
 		}).then(() => {
 			render.end();
-			console.error(err);
+			return Promise.reject(err);
 		});
 	});
 };

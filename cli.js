@@ -61,7 +61,11 @@ if (!(opts.username && opts.password)) {
 	process.exit(1);
 }
 
-pixivDl(cli.input[0], opts);
+pixivDl(cli.input[0], opts).then(() => {
+	process.exit(0);
+}).catch(err => {
+	console.error(err);
+});
 
 config.set('username', opts.username);
 config.set('password', opts.password);
