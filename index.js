@@ -101,7 +101,6 @@ module.exports = (input, opts) => {
 			return delay(100);
 		}).then(() => {
 			render.end();
-		}).then(() => {
 			console.error(err);
 		});
 	});
