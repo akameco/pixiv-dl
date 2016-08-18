@@ -1,6 +1,6 @@
 {
   "name": "pixiv-dl",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "pixiv image downloader",
   "license": "MIT",
   "repository": "akameco/pixiv-dl",
