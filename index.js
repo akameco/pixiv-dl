@@ -4,7 +4,6 @@ const PixivAppApi = require('pixiv-app-api');
 const pixivImg = require('pixiv-img');
 const delay = require('delay');
 const co = require('co');
-const figures = require('figures');
 const indentString = require('indent-string');
 const logSymbols = require('log-symbols');
 const cliTruncate = require('cli-truncate');
@@ -12,6 +11,7 @@ const chalk = require('chalk');
 const mkdirp = require('mkdirp');
 const dotProp = require('dot-prop');
 const sanitize = require('sanitize-filename');
+const prettyMs = require('pretty-ms');
 const render = require('./render');
 
 const renderInfo = (name, value) => {
@@ -55,7 +55,16 @@ module.exports = (input, opts) => {
 		list = list.filter(x => x.meta_single_page.original_image_url);
 		const len = list.length;
 
+		const start = new Date();
+
 		for (let i = 0; i < len; ++i) {
+			const ratio = Math.min(Math.max((i + 1) / len, 0), 1);
+			const percent = ratio * 100;
+
+			const elapsed = new Date() - start;
+			let eta = percent === 100 ? 0 : elapsed * ((len / (i + 1)) - 1);
+			eta = (isNaN(eta) || !isFinite(eta)) ? 0.0 : eta;
+
 			const x = list[i];
 			const orignalImgUrl = x.meta_single_page.original_image_url;
 			if (!orignalImgUrl) {
@@ -75,7 +84,7 @@ module.exports = (input, opts) => {
 
 			const outputPath = path.resolve(opts.output, sanitize(outputFile()));
 
-			const title = `${i + 1}/${len} ${chalk.yellow('Download')} ${figures.arrowRight} ${orignalImgUrl}`;
+			const title = `${chalk.yellow('Downloading')} ${input} ${i + 1}/${len} (${prettyMs(eta)})`;
 			const out = [
 				['title', chalk.bold(x.title)],
 				['name', `${x.user.name} (${x.user.account})`],
