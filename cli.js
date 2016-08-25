@@ -15,7 +15,8 @@ const cli = meow(`
 	  --uername, -u   pixiv username (use cache)↲
 	  --password, -p  pixiv password (use cache)↲
 	  --output, -o    output directory [Default: curret dir]
-	  --name, -n      custom filename
+	  --name, -n      custamize filename
+	    user.account user.name title
 	  --delay, -d     delay time (ms) [Default: 3000]
 	  --bookmark, -b  filter bookmark count [Default: 0]
 	  ranking         ranking mode
