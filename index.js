@@ -14,6 +14,8 @@ const sanitize = require('sanitize-filename');
 const prettyMs = require('pretty-ms');
 const render = require('./render');
 
+const LIMIT = 5000;
+
 const renderInfo = (name, value) => {
 	const meta = chalk.gray(name);
 	return `${meta} ${value}`;
@@ -43,13 +45,21 @@ module.exports = (input, opts) => {
 		let list = result.illusts;
 
 		while (true) { // eslint-disable-line no-constant-condition
-			if (!pixiv.hasNext()) {
-				break;
+			try {
+				if (!pixiv.hasNext()) {
+					break;
+				}
+				const result = yield pixiv.next();
+				list = [].concat(list, result.illusts);
+				render.update('Get metadata', `${list.length}`);
+				yield delay(opts.delay);
+			} catch (err) {
+				if (pixiv.nextQuery().offset > LIMIT) {
+					break;
+				} else {
+					throw err;
+				}
 			}
-			const result = yield pixiv.next();
-			list = [].concat(list, result.illusts);
-			render.update('Get metadata', `${list.length}`);
-			yield delay(opts.delay);
 		}
 
 		const hasImageUrl = x => x.meta_single_page.original_image_url;
