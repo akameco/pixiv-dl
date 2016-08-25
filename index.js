@@ -52,7 +52,10 @@ module.exports = (input, opts) => {
 			yield delay(opts.delay);
 		}
 
-		list = list.filter(x => x.meta_single_page.original_image_url);
+		const hasImageUrl = x => x.meta_single_page.original_image_url;
+		const bookmark = x => x.total_bookmarks >= opts.bookmark;
+		const filters = [hasImageUrl, bookmark];
+		list = list.filter(x => filters.every(filter => filter(x)));
 		const len = list.length;
 
 		const start = new Date();
