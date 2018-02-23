@@ -1,5 +1,7 @@
 # pixiv-dl [![Build Status](https://travis-ci.org/akameco/pixiv-dl.svg?branch=master)](https://travis-ci.org/akameco/pixiv-dl)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/akameco/pixiv-dl.svg)](https://greenkeeper.io/)
+
 > pixiv image downloader
 
 <img src="screenshot.gif">
