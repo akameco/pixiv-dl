@@ -12,8 +12,8 @@ const cli = meow(`
 	  $ pixiv-dl [input]
 
 	Options
-	  --uername, -u   pixiv username (use cache)↲
-	  --password, -p  pixiv password (use cache)↲
+	  --username, -u  pixiv username (uses cache)
+	  --password, -p  pixiv password (uses cache)
 	  --output, -o    output directory [Default: curret dir]
 	  --name, -n      custamize filename
 	    user.account user.name title
